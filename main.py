@@ -15,30 +15,30 @@ wifi = network.WLAN(network.STA_IF)
 wifi.active(True)
 
 oled.fill(0)
-oled.text("Escaneando Redes",0,5)
+oled.text("Scanning...",0,5)
 oled.show()
 
-lista_redes = wifi.scan()
+ssid_list = wifi.scan()
 
-oled.text("Listo!",0,30)
+oled.text("Done!",0,30)
 oled.show()
-for red in lista_redes:
-	print(red[0].decode()+" "+str(red[3]))
+for ssid in ssid_list:
+	print(ssid[0].decode()+" "+str(ssid[3]))
 
-lista_redes_ordenada = list(sorted(lista_redes, reverse = True, key = lambda x: x[3]))
+sorted_ssid = list(sorted(ssid_list, reverse = True, key = lambda x: x[3]))
 
 print("'''''''''''''''''''''''''")
 
-for red in lista_redes_ordenada:
-    print(red[0].decode()+" "+str(red[3]))
+for ssid in sorted_ssid:
+    print(ssid[0].decode()+" "+str(ssid[3]))
 
 oled.fill(0)
-oled.text(lista_redes_ordenada[0][0].decode(), 0, 0)
-oled.text(str(lista_redes_ordenada[0][3]), 0, 10)
+oled.text(sorted_ssid[0][0].decode(), 0, 0)
+oled.text(str(sorted_ssid[0][3]), 0, 10)
 
-oled.text(lista_redes_ordenada[1][0].decode(), 0, 20)
-oled.text(str(lista_redes_ordenada[1][3]), 0, 30)
+oled.text(sorted_ssid[1][0].decode(), 0, 20)
+oled.text(str(sorted_ssid[1][3]), 0, 30)
 
-oled.text(lista_redes_ordenada[2][0].decode(), 0, 40)
-oled.text(str(lista_redes_ordenada[2][3]), 0, 50)
+oled.text(sorted_ssid[2][0].decode(), 0, 40)
+oled.text(str(sorted_ssid[2][3]), 0, 50)
 oled.show()
