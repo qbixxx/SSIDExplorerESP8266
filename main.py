@@ -27,7 +27,6 @@ for ssid in ssid_list:
 
 sorted_ssid = list(sorted(ssid_list, reverse = True, key = lambda x: x[3]))
 
-print("'''''''''''''''''''''''''")
 
 for ssid in sorted_ssid:
     print(ssid[0].decode()+" "+str(ssid[3]))
